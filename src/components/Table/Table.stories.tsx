@@ -1,0 +1,50 @@
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import Table from "./Table";
+import TableHeader from "./TableHeader";
+import TableRow from "./TableRow";
+import TableCell from "./TableCell";
+import TableFooter from "./TableFooter";
+
+const meta: Meta<typeof Table> = {
+  title: "Components/Table",
+  component: Table,
+  tags: ["autodocs"],
+};
+
+export default meta; // ✅ Default export is required for Storybook
+
+type Story = StoryObj<typeof Table>;
+
+export const Default: Story = {
+  render: () => (
+    <Table border="1px solid #000">
+      <TableHeader>
+        <TableRow>
+          <TableCell align="center">Header 1</TableCell>
+          <TableCell align="center">Header 2</TableCell>
+        </TableRow>
+      </TableHeader>
+      <tbody>
+        <TableRow>
+          <TableCell>Data 1</TableCell>
+          <TableCell>Data 2</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Data 3</TableCell>
+          <TableCell>Data 4</TableCell>
+        </TableRow>
+      </tbody>
+      <TableFooter>
+        <TableRow>
+          {/* Option 1: If TableCell supports colSpan */}
+          {/* <TableCell align="center" colSpan={2}>Footer</TableCell> */}
+
+          {/* Option 2: If TableCell does not support colSpan */}
+          <TableCell align="center">Footer 1</TableCell>
+          <TableCell align="center">Footer 2</TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
+  ),
+};
